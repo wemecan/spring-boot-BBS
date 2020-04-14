@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bbs.mapper.NotifictionMapper">
+
+    <resultMap id="notifictionNotifierBean" type="com.bbs.pojo.Notifiction">
+        <id column="n_id" property="id"></id>
+        <result column="type" property="type"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="status" property="status"></result>
+        <result column="outer_id" property="outerId"></result>
+        <!-- 通知人 -->
+        <association property="notifier" javaType="com.bbs.pojo.User">
+            <id column="u_id" jdbcType="INTEGER" property="id" />
+            <result column="nickName" jdbcType="VARCHAR" property="nickName" />
+            <result column="face" jdbcType="VARCHAR" property="face" />
+        </association>
+    </resultMap>
+
+    <insert id="addNotifiction" parameterType="com.bbs.pojo.Notifiction">
+        INSERT INTO `bbs`.`notification`
+        (`id`,
+        `notifier`,
+        `receiver`,
+        `outer_id`,
+        `type`,
+        `create_time`,
+        `status`
+        )
+        VALUES
+        (null,
+        #{notifier.id},
+        #{receiver.id},
+        #{outer.id},
+        #{type},
+        NOW(),
+        #{status}
+        );
+
+    </insert>
+    <!-- 获取通知 -->
+    <select id="queryNotifiction" parameterType="Integer" resultMap="notifictionNotifierBean">
+        SELECT
+            n1.id AS n_id,
+            `outer_id`,
+            `type`,
+            `create_time`,
+            `status`,
+            u2.id AS u_id,
+            nickName,
+            face
+
+        FROM
+        `bbs`.`notification` n1 INNER JOIN `user` u2
+        ON n1.notifier = u2.id
+
+        WHERE n1.receiver = #{userId} AND n1.notifier != #{userId}
+    </select>
+    <!-- 改成已读 -->
+    <update id="readNotifiction" parameterType="Integer">
+        update notification set `status` = 1 where id = #{notifictionId}
+    </update>
+
+    <!-- 获取未读通知 -->
+    <select id="getUnreadNotifier" parameterType="Integer" resultType="Integer">
+        SELECT count(*) FROM notification WHERE receiver = #{userId} AND STATUS = 0 AND notifier != #{userId}
+    </select>
+</mapper>
