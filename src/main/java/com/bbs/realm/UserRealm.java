@@ -37,8 +37,11 @@ public class UserRealm extends AuthorizingRealm {
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
         //把传来的账号密码给user对象
         User user = new User();
+
         user.setAccountId(usernamePasswordToken.getUsername());
+
         user.setPassword(new String(usernamePasswordToken.getPassword()));
+
         User users = userServiceInte.login(user);
         //2、判断用户名称是否存在
         if (users == null) {

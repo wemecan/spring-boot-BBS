@@ -43,7 +43,13 @@ public class ShiroConfig {
         filterMap.put("/", "anon");
         filterMap.put("/loginUser", "anon");
         filterMap.put("/question/*", "anon");
+        //静态资源
         filterMap.put("/static/**", "anon");
+        filterMap.put("/images/**","anon");
+        filterMap.put("/css/**","anon");
+        filterMap.put("/js/**","anon");
+        filterMap.put("/json/**","anon");
+        filterMap.put("/admin/**","anon");  //后台首页
         //filterMap.put("/publish","user");
         //filterMap.put("/createComment","user");
         filterMap.put("/**", "rememberMe,user");
