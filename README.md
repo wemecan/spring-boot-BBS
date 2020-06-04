@@ -2,12 +2,12 @@
 
 #### 介绍
 {**以下是spring boot bbs 项目**
-spring boot 论坛项目是用一个月时间跟着【码匠】视频制作 }
-还有很多的功能不是很完善，bug当然也有。(时间管理 较紧张)
-也希望各位大佬帮忙完善完善！ :blush: 
+spring boot 论坛项目是用一个月时间跟着【码匠】视频制作 }  
+还有很多的功能不是很完善，bug当然也有。(时间管理 较紧张)  
+也希望各位大佬帮忙完善完善！ :blush:   
 
 #### 技术栈
-spring-boot bootstrap shiro(添加了记住我功能) mybatis 
+spring-boot  bootstrap  shiro(添加了记住我功能)  mybatis 
 
 ####  演示图
 
