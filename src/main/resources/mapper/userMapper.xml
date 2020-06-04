@@ -21,4 +21,8 @@
     <select id="login" resultMap="UserResultMap" parameterType="com.bbs.pojo.User">
         select * from user where account_id = #{accountId} and password = #{password}
     </select>
+    <!-- 根据用户id查询用户信息 -->
+    <!--<select id="getUserById" parameterType="Integer" resultMap="UserResultMap">
+        select * from user where id = #{id}
+    </select>-->
 </mapper>

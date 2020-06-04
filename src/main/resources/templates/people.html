@@ -9,14 +9,21 @@
     <link rel="stylesheet" th:href="@{/static/css/index.css}" />
 
     <style>
+        .table-bordered > tbody > tr > td
+        {
+            border: white 0px solid;
+        }
 
+        .seting{
+            margin-left: 100px;
+        }
     </style>
 </head>
 <body style="background-color: #f1f4f9;">
     <!-- 头部文件 -->
     <div th:replace="hreader :: html"></div>
 
-    <div class="row container center-block">
+    <div class="row container center-block" style="height:100%;">
         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12" style="background-color: white;">
 
             <!-- 页头 -->
@@ -63,7 +70,7 @@
                     </ul>
                 </nav>
             </div>
-
+            <!-- 我的通知 -->
             <div th:if="${TYPE eq '我的通知'}">
 
                 <ul style="list-style: none;padding:0px;">
@@ -76,6 +83,33 @@
                         <hr />
                     </li>
                 </ul>
+
+            </div>
+
+            <!-- 我的资料 -->
+            <div th:if="${TYPE eq '我的资料'}">
+
+                <div style="height: 80px;">
+
+                    <img style="width: 70px; height: 70px;" class="img-thumbnail" th:src="${session.USER.face}"/>
+
+                    <span class="seting text-primary" th:text="${'用户名:'+session.USER.accountId}"></span>
+                    <br/><span class="seting text-primary" th:text="'加入于 '+${session.USER.regTime}"></span>
+                </div>
+
+                <div class="page-header">
+                    <h3>昵称<small class="seting" th:text="${session.USER.nickName}"></small></h3>
+                </div>
+
+                <div class="page-header">
+                    <h3>性别<small class="seting" th:text="${session.USER.sex}"></small></h3>
+                </div>
+                <div class="page-header">
+                    <h3>邮箱<small class="seting" th:text="${session.USER.email}"></small></h3>
+                </div>
+                <div class="page-header">
+                    <h3>mobile<small class="seting" th:text="${session.USER.mobile}"></small></h3>
+                </div>
 
             </div>
         </div>

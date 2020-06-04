@@ -6,6 +6,7 @@ import com.bbs.pojo.Question;
 import com.bbs.pojo.User;
 import com.bbs.service.inte.NotifictionServiceInte;
 import com.bbs.service.inte.QuestionServiceInte;
+import com.bbs.service.inte.UserServiceInte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,10 @@ public class UserController {
     //通知业务逻辑层接口
     @Autowired
     private NotifictionServiceInte notifictionServiceInte;
+
+    //用户业务逻辑层接口
+    @Autowired
+    private UserServiceInte userServiceInte;
     /**
      * 跳转到个人中心 并进行分类 获取用户的问题列表
      * @param type
@@ -51,6 +56,7 @@ public class UserController {
 
         }else if ("mine".equals(type)){
             model.addAttribute("TYPE","我的资料");
+
         }else if ("notifiction".equals(type)){
 
             model.addAttribute("NOTIFICTION_LIST",notifictions);

@@ -1,3 +1,14 @@
+
+*.class
+*.log
+*.lock
+
+### Package files ###
+*.jar
+*.war
+*.ear
+target/
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
