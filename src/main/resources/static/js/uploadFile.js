@@ -22,12 +22,10 @@ $('#fileUpload').change(function (e) {
                 var count = $('#img_url').children('span').length;
 
 
-                $('#img_url').append('<span class="text-success">第'+(count+1)+'张图片地址：'+result+'</span><br/>')
+                $('#img_url').append('<span class="text-success">第'+(count+1)+'张图片地址：<font color="blue">'+result+'</font></span><br/>')
 
 
-
-                console.log(result)
-            },
+            }
         })
     }
 

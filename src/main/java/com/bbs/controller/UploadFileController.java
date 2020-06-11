@@ -48,7 +48,7 @@ public class UploadFileController {
             ex.printStackTrace();
         }
 
-        return "http://img.xiaotaozy.cn/"+uploadUrl;
+        return "http://image-taogu.oss-cn-shanghai.aliyuncs.com/"+uploadUrl;
     }
 
     /**
